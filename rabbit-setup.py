@@ -29,7 +29,9 @@ while 1:
     file.close()
 
     print("*\nrabbit successfully installed.\n*\nenjoy it.")
-
+    
+    li = input("*\npress enter to exit.\n*")
+    
     os.remove('rabbit-setup.py')
     break
 
