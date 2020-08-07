@@ -5,8 +5,10 @@ print("============\nrabbit setup\n============")
 
 border = 3
 while 1:
-	if border == 0:
-		print("be cool and come again.\n*")
+    if border == 0:
+        print("be cool and come again.\n*")
+        sys.exit()
+
     un_input = input('enter your username in session:')
 
     try:
