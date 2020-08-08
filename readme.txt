@@ -1,4 +1,4 @@
-======================================
+=======================================
 rabbit is distributed with MIT License.
 =======================================
 rabbit is a program that encrypts and
