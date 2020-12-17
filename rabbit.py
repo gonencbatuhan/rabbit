@@ -19,7 +19,7 @@ now= datetime.now()
 today = now.strftime("%D")
 #---
 
-chars = "abcdefqwrtyuiop[]}{POIUYTREWQsghjkl;'|:LKJHGFDSAzxvnm,./?><MNBVCXZ1234567890-=+_)(*&^%$#@!~ığüşöçİĞÜŞÖÇ"
+chars = "abcdefqwrtyuiop[]}{POIUYTREWQsghjkl;'|:LKJHGFDSAzxvnm,./?><MNBVCXZ1234567890-=+_)(*&^%$#@!~ığüşöçİĞÜŞÖÇâîûôê€æ"
 
 #key-generator
 
@@ -47,7 +47,7 @@ def keyGenerator():
 			continue
 
 
-		integerWeNeed_2 = rInt(0,92)
+		integerWeNeed_2 = rInt(0,99)
 
 		for i in used:
 			if i == integerWeNeed_2:
@@ -118,8 +118,6 @@ while 1:
 
 
 			print("-\nall rabbitlogs deleted successfully.")
-			
-			os.chdir("../")
 			continue
 
 		elif first_input == "q":
@@ -270,13 +268,9 @@ while 1:
 			continue
 
 	#rabbited-text
-	start = time()
+	
 	result = rabbit(willRabbited,specialCharArray)
-	end = time()
-
-	#how long it take
-	takes = end - start
-
+	
 
 	print("\n\n{}\n******\n".format(result))
 
@@ -326,7 +320,9 @@ while 1:
 			now = datetime.now()
 			now = now.strftime("%x %X")
 
-			content="key : {}\n\ntext : {}\n\nrabbited : {}\n\nit took {} seconds to compute\n\n{}".format(key_backup,willRabbited,result,takes,now)
+			character_number = len(willRabbited)
+
+			content="key : {}\n\ntext : {}\n\nrabbited : {}\n\ncontains {} characters\n\n{}".format(key_backup,willRabbited,result,character_number,now)
 
 			file.write(content)
 			file.close()
