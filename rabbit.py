@@ -12,7 +12,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 """
 import sys,os
 from random import randint as rInt
-
+from time import time
 #date-generator
 from datetime import datetime
 now= datetime.now()
@@ -256,7 +256,13 @@ while 1:
 			continue
 
 	#rabbited-text
+	start = time()
 	result = rabbit(willRabbited,specialCharArray)
+	end = time()
+
+	#how long it take
+	takes = end - start
+
 
 	print("\n\n{}\n******\n".format(result))
 
@@ -306,7 +312,7 @@ while 1:
 			now = datetime.now()
 			now = now.strftime("%x %X")
 
-			content="key : {}\n\ntext : {}\n\nrabbited : {}\n\n{}".format(key_backup,willRabbited,result,now)
+			content="key : {}\n\ntext : {}\n\nrabbited : {}\n\nit took {} seconds to compute\n\n{}".format(key_backup,willRabbited,result,takes,now)
 
 			file.write(content)
 			file.close()
