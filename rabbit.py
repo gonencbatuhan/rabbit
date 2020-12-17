@@ -10,7 +10,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
-
+import sys
 from random import randint as rInt
 
 #date-generator
@@ -101,7 +101,24 @@ def rabbit(ar,char_array):
 print("=============\nrabbit\n=============\nfor exit 'q'.\nfor generate a key 'g'.\n=============\n=============")
 
 while 1:
-	key = input("-\n-\nenter your rabbit key:")
+	key = ""
+	while 1:
+		first_input = input("------\nchoose one :")
+
+		if first_input == "q":
+			sys.exit()
+
+		elif first_input == "g":
+			keyGenerator()
+			continue
+
+		elif (first_input.count("-") == 9):
+			key = first_input
+			break
+
+		else:
+			continue
+
 
 	key_backup = key
 
@@ -121,7 +138,7 @@ while 1:
 
 	splitted_keys = key.split("-")
 
-	
+
 	k1_1 = splitted_keys[0][0]
 	k2_1 = splitted_keys[1][0]
 	k3_1 = splitted_keys[2][0]
