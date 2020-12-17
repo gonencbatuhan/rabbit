@@ -19,7 +19,7 @@ now= datetime.now()
 today = now.strftime("%D")
 #---
 
-chars = "abcdefqwrtyuiop[]}{POIUYTREWQsghjkl;'|:LKJHGFDSAzxvnm,./?><MNBVCXZ1234567890-=+_)(*&^%$#@!~"
+chars = "abcdefqwrtyuiop[]}{POIUYTREWQsghjkl;'|:LKJHGFDSAzxvnm,./?><MNBVCXZ1234567890-=+_)(*&^%$#@!~ığüşöçİĞÜŞÖÇ"
 
 #key-generator
 
@@ -47,7 +47,7 @@ def keyGenerator():
 			continue
 
 
-		integerWeNeed_2 = rInt(0,80)
+		integerWeNeed_2 = rInt(0,92)
 
 		for i in used:
 			if i == integerWeNeed_2:
@@ -229,8 +229,31 @@ while 1:
 		specialCharArray.append(i)
 
 
-	#the text will be rabbited
-	willRabbited = input(">>>\nenter a text:")
+	#finds a text to rabbited
+	willRabbited = ""
+	
+	while 1:
+		way = input("which one do you prefer ?\na path to the .txt file (p)\na simple message by hand now (m) :")
+
+		if way == "p":
+			
+			path_to_file = input("-\nenter the path to file :")
+
+			try:
+				file = open(path_to_file,"r")
+				willRabbited = file.read()
+				file.close()
+				break
+			except:
+				print("-\n#something went wrong.#\n-\n-")
+				continue
+
+		elif way == "m":
+			willRabbited = input("-\nenter your text :")
+			break
+		else:
+			print("-\n#unvalid input#\n-")
+			continue
 
 	#rabbited-text
 	result = rabbit(willRabbited,specialCharArray)
@@ -279,7 +302,7 @@ while 1:
 			filename = "rabbitlog{}_{}.txt".format(newlognum,today)
 			filename = filename.replace("/","")
 			file = open(filename,"w")
-			content="key : {}\n\ntext : {}".format(key_backup,result)
+			content="key : {}\n\ntext : {}\n\nrabbited text : {}".format(key_backup,willRabbited,result)
 
 			file.write(content)
 			file.close()
