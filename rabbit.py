@@ -19,12 +19,12 @@ now= datetime.now()
 today = now.strftime("%D")
 #---
 
-chars = "abcdefqwrtyuiop[]}{POIUYTREWQsghjkl;'|:LKJHGFDSAzxvnm,./?><MNBVCXZ1234567890-=+_)(*&^%$#@!~üğçşöı"
+chars = "abcdefqwrtyuiop[]}{POIUYTREWQsghjkl;'|:LKJHGFDSAzxvnm,./?><MNBVCXZ1234567890-=+_)(*&^%$#@!~"
 
 #key-generator
 
 def keyGenerator():
-	generalPurposeStr = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	generalPurposeStr = "abcdefghijklmnopqrstuvwxyz()[]}{:;,./?><+_*#$&!'^ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	
 	used=list()
 
@@ -47,7 +47,7 @@ def keyGenerator():
 			continue
 
 
-		integerWeNeed_2 = rInt(0,86)
+		integerWeNeed_2 = rInt(0,80)
 
 		for i in used:
 			if i == integerWeNeed_2:
@@ -60,6 +60,7 @@ def keyGenerator():
 		keySection = "{}{}".format(charWeNeed,integerWeNeed_2)
 		keySections.append(keySection)
 
+		#appends useds to a list to dont use they again
 		used.append(charWeNeed)
 		used.append(integerWeNeed_2)
 
@@ -103,7 +104,7 @@ print("=============\nrabbit\n=============\nfor exit 'q'.\nfor generate a key '
 while 1:
 	key = ""
 	while 1:
-		first_input = input("------\nchoose one :")
+		first_input = input("------\nchoose one or enter a key:")
 
 		if first_input == "q":
 			sys.exit()
@@ -131,14 +132,16 @@ while 1:
 		continue
 
 
+	#an unique character array to encrypt
 	specialCharArray = list()
 	for i in chars:
 		specialCharArray.append(i)
 
-
+	#makes key ready to use
 	splitted_keys = key.split("-")
 
 
+	#fetch chars from sections of key
 	k1_1 = splitted_keys[0][0]
 	k2_1 = splitted_keys[1][0]
 	k3_1 = splitted_keys[2][0]
@@ -150,6 +153,7 @@ while 1:
 	k9_1 = splitted_keys[8][0]
 	k10_1 = splitted_keys[9][0]
 
+	#remove chars from list
 	specialCharArray.remove(k1_1)
 	specialCharArray.remove(k2_1)
 	specialCharArray.remove(k3_1)
@@ -161,6 +165,7 @@ while 1:
 	specialCharArray.remove(k9_1)
 	specialCharArray.remove(k10_1)
 
+	#fetch indexes of chars in key
 	k1_2 = int(splitted_keys[0].replace(k1_1,""))
 	k2_2 = int(splitted_keys[1].replace(k2_1,""))
 	k3_2 = int(splitted_keys[2].replace(k3_1,""))
@@ -172,6 +177,7 @@ while 1:
 	k9_2 = int(splitted_keys[8].replace(k9_1,""))
 	k10_2 = int(splitted_keys[9].replace(k10_1,""))
 
+	#backup of old chars
 	instead_1 = specialCharArray[k1_2]
 	instead_2 = specialCharArray[k2_2]
 	instead_3 = specialCharArray[k3_2]
@@ -185,6 +191,7 @@ while 1:
 
 	insteads = [instead_1,instead_2,instead_3,instead_4,instead_5,instead_6,instead_7,instead_8,instead_9,instead_10]
 
+	#declares new chars instead olds
 	specialCharArray[k1_2] = splitted_keys[0][0]
 	specialCharArray[k2_2] = splitted_keys[1][0]
 	specialCharArray[k3_2] = splitted_keys[2][0]
@@ -196,6 +203,7 @@ while 1:
 	specialCharArray[k9_2] = splitted_keys[8][0]
 	specialCharArray[k10_2] = splitted_keys[9][0]
 
+	#appends old chars to list too
 	for i in insteads:
 		specialCharArray.append(i)
 
@@ -216,7 +224,7 @@ while 1:
 		if last_request.lower() == "y":
 
 			filename = "rabbitlog_{}.txt".format(today)
-			filename = filename.replace("/","l")
+			filename = filename.replace("/","")
 			file = open(filename,"w")
 			content="key : {}\n\ntext : {}".format(key_backup,result)
 
