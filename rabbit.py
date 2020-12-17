@@ -12,62 +12,85 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 """
 
 
-chars = "qwertyuiop[]}{POIUYTREWQasdfghjkl;'|:LKJHGFDSAzxcvbnm,./?><MNBVCXZ1234567890-=+_)(*&^%$#@!~"
+chars = "qwrtyuiop[]}{POIUYTREWQsghjkl;'|:LKJHGFDSAzxvnm,./?><MNBVCXZ1234567890-=+_)(*&^%$#@!~üğçşöı"
 
-def renc(ar):
-    encrypted=''
+#encrypts texts
+def rabbit(ar,char_array):
+    rabbited=''
     for i in ar:
     	if i == " ":
-    		encrypted += "`"
+    		rabbited += "`"
+    		continue
+
+    	elif i == "`":
+    		rabbited += " "
     		continue
 
     	try:
-    		newind = (len(chars) - chars.index(i)) - 1
-    		newchar = chars[newind]
+    		newind = (len(char_array) - char_array.index(i)) - 1
+    		newchar = char_array[newind]
     	except:
     		return "*\nan error happened with chars.\n*"
 
-    	encrypted += newchar
+    	rabbited += newchar
 
-    return encrypted
+    return rabbited
 
-def rdec(ar):
-	decoded=''
-	for i in ar:
-		if i == "`":
-			decoded += ' '
-			continue
-		try:
-			newind = (len(chars) - chars.index(i)) - 1
-			newchar = chars[newind]
-		except:
-			return "*\nan error happened with chars.\n*"
 
-		decoded += newchar
-
-	return decoded
-
-print("=============\nrabbit\n=============\n1 - encrypt\n=============\n2 - decode\n=============\nfor exit 'q'.\n=============")
+print("=============\nrabbit\n=============\nfor exit 'q'.\nfor help 'h'.\n=============\n=============")
 
 while 1:
-	i1 = input(">")
+	key = input("-\n-\nenter your rabbit key :")
 
-	if i1 == 'q':
+	if key == "q":
 		break
 
-	elif i1 == '1':
 
-		i2 = input('>>')
-		print('\n')
-		print(renc(i2))
-
-	elif i1 == '2':
-
-		i2 = input('>>')
-		print('\n')
-		print(rdec(i2))
-
-	else:
+	elif key == "h":
+		print("===\na key must have different 6 number between 0-9.\nexamples:\n987654\n154378\n123456\n===")
 		continue
+
+
+	specialCharArray = list()
+	for i in chars:
+		specialCharArray.append(i)
+
+
+
+	k1 = int(key[0])
+	k2 = int(key[1])
+	k3 = int(key[2])
+	k4 = int(key[3])
+	k5 = int(key[4])
+	k6 = int(key[5])
+
+
+	instead_a = chars[k1]
+	instead_b = chars[k2]
+	instead_c = chars[k3]
+	instead_d = chars[k4]
+	instead_e = chars[k5]
+	instead_f = chars[k6]
+
+	insteads = (instead_a,instead_b,instead_c,instead_d,instead_e,instead_f)
+
+	specialCharArray[k1] = "a"
+	specialCharArray[k2] = "b"
+	specialCharArray[k3] = "c"
+	specialCharArray[k4] = "d"
+	specialCharArray[k5] = "e"
+	specialCharArray[k6] = "f"
+
+	for i in insteads:
+		specialCharArray.append(i)
+
+
+
+	willRabbited = input(">>>\nenter a text:")
+
+	result = rabbit(willRabbited,specialCharArray)
+
+	print("\n\n{}\n******\n".format(result))
+
 
 #===============================end=of=the=program.
