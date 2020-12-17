@@ -99,7 +99,7 @@ def rabbit(ar,char_array):
 
 
 #then program starts
-print("\n\n=============\nrabbit\n=============\nfor exit 'q'.\nfor generate a key 'g'.\nfor enter a key 'k'.\n=============")
+print("\n\n=============\nrabbit\n=============\nfor exit 'q'.\nfor generate a key 'g'.\nfor enter a key 'k'.\nfor delete all the rabbitlogs 'd'.\n=============")
 
 while 1:
 	key = ""
@@ -107,7 +107,19 @@ while 1:
 		first_input = input("\n\n-------------\nchoose one ('o' for options):")
 
 		if first_input == "o":
-			print("----------\ng - generate a key\nq - exit\nk - enter a rabbit key\n----------")
+			print("----------\ng - generate a key\n\nq - exit\n\nk - enter a rabbit key\n\nd - delete all rabbitlogs\n----------")
+			continue
+
+		elif first_input == "d":
+			os.chdir("rabbitlogs/")
+			for a,b,c in os.walk(os.getcwd()):
+				for i in c:
+					os.remove(i)
+
+
+			print("-\nall rabbitlogs deleted successfully.")
+			continue
+
 		elif first_input == "q":
 			sys.exit()
 
@@ -318,6 +330,7 @@ while 1:
 			file.close()
 
 			print("-\nprocess saved successfully.\n-")
+			os.chdir("../")
 			break
 
 		elif last_request.lower() == "n":
