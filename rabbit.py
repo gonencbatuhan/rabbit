@@ -118,6 +118,7 @@ while 1:
 
 
 			print("-\nall rabbitlogs deleted successfully.")
+			os.chdir("../")
 			continue
 
 		elif first_input == "q":
