@@ -14,7 +14,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 chars = "qwrtyuiop[]}{POIUYTREWQsghjkl;'|:LKJHGFDSAzxvnm,./?><MNBVCXZ1234567890-=+_)(*&^%$#@!~üğçşöı"
 
-#encrypts texts
+#rabbits texts
 def rabbit(ar,char_array):
     rabbited=''
     for i in ar:
