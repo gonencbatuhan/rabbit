@@ -33,5 +33,6 @@ while 1:
     li = input("*\npress enter to exit.\n*")
     
     os.remove('rabbit-setup.py')
+    os.remove('readme.txt')
     break
 
