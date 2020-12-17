@@ -10,7 +10,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
-import sys
+import sys,os
 from random import randint as rInt
 
 #date-generator
@@ -104,18 +104,39 @@ print("=============\nrabbit\n=============\nfor exit 'q'.\nfor generate a key '
 while 1:
 	key = ""
 	while 1:
-		first_input = input("------\nchoose one or enter a key:")
+		first_input = input("-------------\nchoose one ('o' for options):")
 
-		if first_input == "q":
+		if first_input == "o":
+			print("----------\ng - generate a key\nq - exit\nk - enter a rabbit key\n----------")
+		elif first_input == "q":
 			sys.exit()
 
 		elif first_input == "g":
 			keyGenerator()
 			continue
 
-		elif (first_input.count("-") == 9):
-			key = first_input
-			break
+		elif first_input == "k":
+			keyflag = True
+
+			ct = 3
+			while 1:
+				if ct == 0:
+					print("-----\nyou entered a lot of wrong key.\ntry another time.")
+					keyflag = False
+					break
+
+				key = input("----------\nenter a key :")
+
+				if not(key.count("-")==9):
+					ct -= 1
+					continue
+
+				break
+
+			if keyflag:
+				break
+
+			continue
 
 		else:
 			continue
@@ -223,7 +244,39 @@ while 1:
 
 		if last_request.lower() == "y":
 
-			filename = "rabbitlog_{}.txt".format(today)
+			try:
+				os.chdir("rabbitlogs")
+			except:
+				os.mkdir("rabbitlogs")
+				os.chdir("rabbitlogs")
+
+
+			
+			today = today.replace("/","")
+
+			lastlognum = 0
+			comparenum = 1
+
+
+			for a,b,c in os.walk(os.getcwd()):
+				for i in c:
+					if i.startswith("rabbitlog"):
+						prelog = i.replace("rabbitlog","")
+						prelog = prelog.replace(".txt","")
+						date = prelog[2:]
+
+						if (date == today):
+							comparenum = int(prelog[0])
+
+							if (comparenum > lastlognum):
+								lastlognum = comparenum
+
+
+						
+			newlognum = lastlognum + 1
+
+
+			filename = "rabbitlog{}_{}.txt".format(newlognum,today)
 			filename = filename.replace("/","")
 			file = open(filename,"w")
 			content="key : {}\n\ntext : {}".format(key_backup,result)
