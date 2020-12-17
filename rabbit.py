@@ -99,12 +99,12 @@ def rabbit(ar,char_array):
 
 
 #then program starts
-print("=============\nrabbit\n=============\nfor exit 'q'.\nfor generate a key 'g'.\n=============\n=============")
+print("\n\n=============\nrabbit\n=============\nfor exit 'q'.\nfor generate a key 'g'.\nfor enter a key 'k'.\n=============")
 
 while 1:
 	key = ""
 	while 1:
-		first_input = input("-------------\nchoose one ('o' for options):")
+		first_input = input("\n\n-------------\nchoose one ('o' for options):")
 
 		if first_input == "o":
 			print("----------\ng - generate a key\nq - exit\nk - enter a rabbit key\n----------")
@@ -302,7 +302,11 @@ while 1:
 			filename = "rabbitlog{}_{}.txt".format(newlognum,today)
 			filename = filename.replace("/","")
 			file = open(filename,"w")
-			content="key : {}\n\ntext : {}\n\nrabbited text : {}".format(key_backup,willRabbited,result)
+
+			now = datetime.now()
+			now = now.strftime("%x %X")
+
+			content="key : {}\n\ntext : {}\n\nrabbited : {}\n\n{}".format(key_backup,willRabbited,result,now)
 
 			file.write(content)
 			file.close()
