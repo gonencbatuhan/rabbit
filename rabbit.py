@@ -138,12 +138,15 @@ while 1:
 					keyflag = False
 					break
 
+					
 				key = input("----------\nenter a key :")
-
+				
+				#control keys with regex if they are valid
 				keypattern = r"^[^0-9][0-9]{1,2}-[^0-9][0-9]{1,2}-[^0-9][0-9]{1,2}-[^0-9][0-9]{1,2}-[^0-9][0-9]{1,2}-[^0-9][0-9]{1,2}-[^0-9][0-9]{1,2}-[^0-9][0-9]{1,2}-[^0-9][0-9]{1,2}-[^0-9][0-9]{1,2}$"
 
 				match = re.match(keypattern,key)
-				if not(match):
+				
+				if not(match) or (key.count("-") > 9):
 					ct -= 1
 					print("\nwrong key format.")
 					continue
