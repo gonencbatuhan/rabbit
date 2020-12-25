@@ -3,36 +3,20 @@ import sys
 
 print("============\nrabbit setup\n============")
 
-border = 3
-while 1:
-    if border == 0:
-        print("be cool and come again.\n*")
-        sys.exit()
+uname = os.getlogin()
+here = os.getcwd()
+new = '\nalias rabbit="python3 {}/rabbit.py"'.format(here)
+newcontent = content + new
 
-    un_input = input('enter your username in session:')
+file = open('/home/{}/.bashrc'.format(uname),'w')
+file.write(newcontent)
+file.close()
 
-    try:
-    	file = open('/home/{}/.bashrc'.format(un_input),'r')
-    	content = file.read()
-    	file.close()
-    except:
-    	print("*\nsomething went wrong.\ntry again.\n*")
-    	border -= 1
-    	continue
-
-    here = os.getcwd()
-    new = '\nalias rabbit="python3 {}/rabbit.py"'.format(here)
-    newcontent = content + new
-
-    file = open('/home/{}/.bashrc'.format(un_input),'w')
-    file.write(newcontent)
-    file.close()
-
-    print("*\nrabbit successfully installed.\n*\nenjoy it.")
+print("*\nrabbit successfully installed.\n*\nenjoy it.")
     
-    li = input("*\npress enter to exit.\n*")
+li = input("*\npress enter to exit.\n*")
     
-    os.remove('rabbit-setup.py')
-    os.remove('readme.txt')
-    break
+os.remove('rabbit-setup.py')
+os.remove('readme.txt')
+os.remove('LICENSE')
 
