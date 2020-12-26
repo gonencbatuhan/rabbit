@@ -3,12 +3,26 @@ import sys
 
 print("============\nrabbit setup\n============")
 
-uname = os.getlogin()
+content = ""
+
+while 1:
+    uname = input("username:")
+
+    try:
+        f = open(f"/home/{uname}/.bashrc","r")
+        content = f.read()
+        f.close()
+        break
+    except:
+        print("unvalid username.")
+        continue
+
+
 here = os.getcwd()
-new = '\nalias rabbit="python3 {}/rabbit.py"'.format(here)
+new = f'\nalias rabbit="python3 {here}/rabbit.py"'
 newcontent = content + new
 
-file = open('/home/{}/.bashrc'.format(uname),'w')
+file = open(f'/home/{uname}/.bashrc','w')
 file.write(newcontent)
 file.close()
 
