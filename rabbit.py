@@ -19,12 +19,12 @@ now= datetime.now()
 today = now.strftime("%D")
 #---
 
-chars = string.ascii_letters + string.digits + string.punctuation + "ığüşöçİĞÜŞÖÇâîûôê€æ"
+chars = (string.ascii_letters + string.digits + string.punctuation + "ığüşöçİĞÜŞÖÇâîûôê€æ" ).replace("`", "")
 
 #key-generator
 
 def keyGenerator():
-	generalPurposeStr = string.ascii_letters + string.punctuation 
+	generalPurposeStr = (string.ascii_letters + string.punctuation).replace("`", "")
 	
 	used=list()
 
