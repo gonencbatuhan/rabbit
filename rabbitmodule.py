@@ -4,6 +4,8 @@
 
 def key_generator():
 	import string
+	from random import randint as rInt
+
 	generalPurposeStr = (string.ascii_letters + string.punctuation).replace("`", "")
 	
 	used=list()
@@ -186,7 +188,7 @@ def logger(key, beforerabbit, afterrabbit):
 				os.chdir("rabbitlogs")
 
 
-			today = datetime.now().strfimte("%x")
+			today = datetime.now().strftime("%x")
 			today = today.replace("/","")
 
 
@@ -240,9 +242,10 @@ def logger(key, beforerabbit, afterrabbit):
 			continue
 
 
-def key_validator(key):
+def key_validator():
 	import re
 
+	key = ""
 	keyflag = True
 
 	ct = 3
@@ -268,7 +271,7 @@ def key_validator(key):
 		break
 
 	if keyflag:
-		return True
+		return True, key
 
 
-	return False
+	return False, key
