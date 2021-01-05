@@ -21,7 +21,9 @@ today = now.strftime("%D")
 
 chars = (string.ascii_letters + string.digits + string.punctuation + "ığüşöçİĞÜŞÖÇâîûôê€æ" ).replace("`", "")
 
-#key-generator
+
+
+#key-generator-function
 
 def keyGenerator():
 	generalPurposeStr = (string.ascii_letters + string.punctuation).replace("`", "")
@@ -74,7 +76,6 @@ def keyGenerator():
 
 
 
-
 #function that decodes or encrypts texts
 def rabbit(ar,char_array):
     rabbited=''
@@ -96,6 +97,9 @@ def rabbit(ar,char_array):
     	rabbited += newchar
 
     return rabbited
+
+
+
 
 
 #then program starts
