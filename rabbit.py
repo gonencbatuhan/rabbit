@@ -26,7 +26,7 @@ chars = (string.ascii_letters + string.digits + string.punctuation + "ığüşö
 #key-generator-function
 
 def keyGenerator():
-	generalPurposeStr = (string.ascii_letters + string.punctuation).replace("`", "")
+	generalPurposeStr = (string.ascii_letters + string.punctuation).replace("`", "").replace("-", "")
 	
 	used=list()
 

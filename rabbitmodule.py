@@ -6,7 +6,7 @@ def key_generator():
 	import string
 	from random import randint as rInt
 
-	generalPurposeStr = (string.ascii_letters + string.punctuation).replace("`", "")
+	generalPurposeStr = (string.ascii_letters + string.punctuation).replace("`", "").replace("-", "")
 	
 	used=list()
 
