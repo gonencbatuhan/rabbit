@@ -60,7 +60,7 @@ def menu(input1):
 					continue
 
 			rabbited = rabbitmodule.rabbiter(text, unique_array)
-                        print(f"---\n\n {rabbited}\n---\n")
+            print(f"---\n\n {rabbited}\n---\n")
 
 			rabbitmodule.logger(key, text, rabbited)
 		else:
