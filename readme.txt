@@ -9,5 +9,5 @@ rabbit-setup.py .then just write rabbit
 in terminal to use.
 =======================================
 author : Batuhan Gonenc
-contact : gonencbthn@pm.me
-==========================
+contact : gonencbthn@gmail.com
+==============================
